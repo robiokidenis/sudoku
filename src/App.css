@@ -119,9 +119,42 @@ body {
 .game__board {
   font-family: 'Noto Sans', sans-serif;
   font-size: 26px;
-  margin: 30px 0;
+  margin-top: 10px;
+  margin-bottom: 30px;
   border: 2px solid var(--color-grey);
   border-collapse: collapse;
+}
+.game__board__title{
+  margin-top: 40px;
+  /* float: left;
+  padding-left: auto; */
+  /* border: 2px solid var(--color-grey); */
+}
+.game__board__pause_button{
+  margin-top: 40px;
+  margin-right: 20px;
+  color: cadetblue;
+  position: relative;
+  right: 0px;
+  /* float: right; */
+  /* border: 2px solid var(--color-grey); */
+}
+.game__board__pause_button:hover{
+  margin-top: 40px;
+  margin-right: 20px;
+  color: grey;
+  text-decoration: underline;
+  /* top: 0px;
+  right: 0px; */
+  /* border: 2px solid var(--color-grey); */
+}
+.game__board_top{
+  /* margin-top: 40px; */
+  position: relative;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  /* border: 2px solid var(--color-grey); */
 }
 
 .game__row:nth-child(3n) {
@@ -437,6 +470,21 @@ input:checked + .status__action-fast-mode-slider:before {
   font-size: 60px;
   font-weight: 600;
   color: var(--color-orange);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.20),
+              0 10px 20px rgba(0, 0, 0, 0.25);
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+.overlay__text2{
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 58%;
+  left: 50%;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 35px;
+  font-weight: 600;
+  color: var(--color-grey-lighter);
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.20),
               0 10px 20px rgba(0, 0, 0, 0.25);
   transform: translate(-50%,-50%);

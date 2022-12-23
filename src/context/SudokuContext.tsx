@@ -19,7 +19,11 @@ type SudokuContextProps = {
   won: boolean,
   setWon: React.Dispatch<React.SetStateAction<boolean>>,
   paused: boolean,
-  setPaused: React.Dispatch<React.SetStateAction<boolean>>
+  setPaused: React.Dispatch<React.SetStateAction<boolean>>,
+  countTimer:number
+  setCountTimer: React.Dispatch<React.SetStateAction<number>>,
+  countMistakes:number,
+  setCountMistakes: React.Dispatch<React.SetStateAction<number>>,
 };
 
 
@@ -31,7 +35,9 @@ const SudokuContext = createContext<SudokuContextProps>({ numberSelected: '0', s
                                                           cellSelected: -1, setCellSelected: () => {},
                                                           initArray: [], setInitArray: () => {},
                                                           won: false, setWon: () => {}, 
-                                                          paused:false,setPaused:()=>{}
+                                                          paused:false,setPaused:()=>{},
+                                                          countTimer:0,setCountTimer:()=>{},
+                                                          countMistakes:0,setCountMistakes:()=>{}
                                                         });
 
 type SudokuProviderProps = {
@@ -46,6 +52,8 @@ export const SudokuProvider = ({ children }: SudokuProviderProps) => {
   let [ fastMode, setFastMode ] = useState<boolean>(false);
   let [ cellSelected, setCellSelected ] = useState<number>(-1);
   let [ initArray, setInitArray ] = useState<string[]>([]);
+  let [ countTimer, setCountTimer ] = useState<number>(0);
+  let [ countMistakes, setCountMistakes ] = useState<number>(0);
   let [ won, setWon ] = useState<boolean>(false);
   let [ paused, setPaused ] = useState<boolean>(false);
 
@@ -60,7 +68,10 @@ export const SudokuProvider = ({ children }: SudokuProviderProps) => {
         cellSelected, setCellSelected,
         initArray, setInitArray,
         won, setWon,
-        paused,setPaused
+        paused,setPaused,
+        countTimer,setCountTimer,
+        countMistakes,setCountMistakes
+
       }
     }>
       {children}

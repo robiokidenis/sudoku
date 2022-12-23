@@ -43,6 +43,9 @@ export const Game: React.FC<{}> = () => {
     setWon,
     paused,
     setPaused,
+    setCountTimer,
+    countTimer,
+    countMistakes,setCountMistakes
   } = useSudokuContext();
   let [mistakesMode, setMistakesMode] = useState<boolean>(false);
   let [history, setHistory] = useState<string[][]>([]);
@@ -66,7 +69,10 @@ export const Game: React.FC<{}> = () => {
     setCellSelected(-1);
     setHistory([]);
     setWon(false);
-    setPaused(fastMode);
+    setPaused(false);
+    setCountMistakes(0);
+    // setCountTimer(0)
+   
   }
 
   /**
@@ -117,7 +123,9 @@ export const Game: React.FC<{}> = () => {
       if (value === solvedArray[index]) {
         _fillCell(index, value);
       } else {
+        setCountMistakes(countMistakes+1);
         // TODO: Flash - Mistakes not allowed in Mistakes Mode
+        
       }
     } else {
       _fillCell(index, value);
@@ -234,6 +242,17 @@ export const Game: React.FC<{}> = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  function formatTime(num: number): string {
+    let stringTimer = "";
+    var hours = Math.floor(num / 3600);
+    var minutes = Math.floor((num - hours * 3600) / 60);
+    var seconds = countTimer - (hours * 3600 + minutes * 60);
+    stringTimer += hours ? "" + hours + ":" : "";
+    stringTimer += minutes ? (minutes < 10 ? "0" : "") + minutes + ":" : "00:";
+    stringTimer += seconds < 10 ? "0" + seconds : seconds;
+    return stringTimer;
+  }
+
   return (
     <>
       <div className={overlay ? "container blur" : "container"}>
@@ -265,6 +284,7 @@ export const Game: React.FC<{}> = () => {
           You <span className="overlay__textspan1">solved</span>{" "}
           <span className="overlay__textspan2">it!</span>
         </h2>
+          <h3 className="overlay__text2">Time: {formatTime(countTimer)}</h3>
       </div>
       <div
         className={paused ? "overlay overlay--visible" : "overlay"}
@@ -272,6 +292,14 @@ export const Game: React.FC<{}> = () => {
       >
         <h2 className="overlay__text">
           PAUSED
+        </h2>
+      </div>
+      <div
+        className={(countMistakes>=5) ? "overlay overlay--visible" : "overlay"}
+        onClick={onClickNewGame}
+      >
+        <h2 className="overlay__text">
+          GAME OVER!
         </h2>
       </div>
     </>
