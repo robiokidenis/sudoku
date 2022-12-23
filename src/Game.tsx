@@ -44,6 +44,8 @@ export const Game: React.FC<{}> = () => {
     paused,
     setPaused,
     setCountTimer,
+    countHint,
+    setCountHint,
     countTimer,
     countMistakes,setCountMistakes
   } = useSudokuContext();
@@ -71,6 +73,7 @@ export const Game: React.FC<{}> = () => {
     setWon(false);
     setPaused(false);
     setCountMistakes(0);
+    setCountHint(0)
     // setCountTimer(0)
    
   }
@@ -200,8 +203,10 @@ export const Game: React.FC<{}> = () => {
    * fill the selected cell if its empty or wrong number is filled.
    */
   function onClickHint() {
-    if (cellSelected !== -1) {
+    if (cellSelected !== -1 && countHint<3) {
       _fillCell(cellSelected, solvedArray[cellSelected]);
+      setCountHint(countHint+1);
+      
     }
   }
   function onClickPause() {

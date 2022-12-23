@@ -132,7 +132,7 @@ body {
 }
 .game__board__pause_button{
   margin-top: 40px;
-  margin-right: 20px;
+  margin-right: 12px;
   color: cadetblue;
   position: relative;
   right: 0px;
@@ -140,8 +140,6 @@ body {
   /* border: 2px solid var(--color-grey); */
 }
 .game__board__pause_button:hover{
-  margin-top: 40px;
-  margin-right: 20px;
   color: grey;
   text-decoration: underline;
   /* top: 0px;

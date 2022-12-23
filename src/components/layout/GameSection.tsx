@@ -18,6 +18,7 @@ export const GameSection = (props: GameSectionProps) => {
     initArray,
     paused,
     countMistakes,
+    countHint,
     setPaused
   } = useSudokuContext();
 
@@ -173,6 +174,7 @@ export const GameSection = (props: GameSectionProps) => {
       <div className="game__board_top">
 
       <div className="game__board__title">Mistakes :  <span style={{color:'red'}}> {countMistakes} / 5</span></div>
+      <div className="game__board__title">Hint :  <span style={{color:'blue'}}> {countHint} / 3</span></div>
       <div className="game__board__pause_button" onClick={()=>setPaused(!paused)}> Pause</div>
       </div>
       <table className="game__board">
