@@ -19,6 +19,7 @@ export const Difficulty = (props: DifficultyProps) => {
         <option value="Medium">Medium</option>
         <option value="Hard">Hard</option>
       </select>
+      {/* <a onClick={props.onClickPause} className="btn btn-primary" href="#" role="button">Pause</a> */}
     </div>
   )
 }

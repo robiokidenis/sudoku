@@ -22,7 +22,7 @@ type StatusSectionProps = {
 export const StatusSection = (props: StatusSectionProps) => {
   return (
     <section className="status">
-    <a onClick={props.onClickPause} className="btn btn-primary" href="#" role="button">Pause</a>
+    {/* <a onClick={props.onClickPause} className="btn btn-primary" href="#" role="button">Pause</a> */}
 
       <Difficulty onChange={props.onChange} />
       <Timer />

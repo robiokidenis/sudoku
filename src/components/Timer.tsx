@@ -8,7 +8,7 @@ import moment from "moment";
  */
 export const Timer = () => {
   let [counterTime, setCounterTime] = useState(0);
-  let { timeGameStarted, won, paused } = useSudokuContext();
+  let { timeGameStarted, won, paused ,setPaused} = useSudokuContext();
 
   useEffect(() => {
     if  (!paused && !won ) setTimeout(() => tick(), 1000);
@@ -29,5 +29,5 @@ export const Timer = () => {
     return stringTimer;
   }
 
-  return <div className="status__time">{formatTime(counterTime)}</div>;
+  return <div className="status__time"title="Click to pause game" onClick={()=>setPaused(!paused)}>{formatTime(counterTime)}</div>;
 };
