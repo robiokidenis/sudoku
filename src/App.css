@@ -34,6 +34,11 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
 	line-height: 1.4em;
   font-weight: 300;
+    user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
 }
 
 /**
@@ -224,6 +229,12 @@ body {
   color: var(--color-grey-light);
   padding-top: 4px;
   margin: 0 30px;
+  cursor: pointer;
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
 }
 
 .status__numbers {

@@ -28,7 +28,6 @@ export const StatusSection = (props: StatusSectionProps) => {
       <Timer />
       <Numbers onClickNumber={(number) => props.onClickNumber(number)} />
       <div className="status__actions">
-        {/* <Action action='Pause' onClickAction={props.onClickPause} /> */}
         <Action action='undo' onClickAction={props.onClickUndo} />
         <Action action='erase' onClickAction={props.onClickErase} />
         <Action action='hint' onClickAction={props.onClickHint} />

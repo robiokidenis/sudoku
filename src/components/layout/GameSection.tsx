@@ -77,6 +77,7 @@ export const GameSection = (props: GameSectionProps) => {
    * Returns the classes for a cell related to the selected cell.
    */
   function _selectedCell(indexOfArray: number, value: string, highlight: string) {
+    console.log(indexOfArray,":",value)
     if (value !== '0') {
       if (initArray[indexOfArray] === '0') {
         return (
