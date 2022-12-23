@@ -13,6 +13,7 @@ type StatusSectionProps = {
   onClickHint: () => void,
   onClickMistakesMode: () => void,
   onClickFastMode: () => void,
+  onClickPause: () => void
 };
 
 /**
@@ -21,10 +22,13 @@ type StatusSectionProps = {
 export const StatusSection = (props: StatusSectionProps) => {
   return (
     <section className="status">
+    <a onClick={props.onClickPause} className="btn btn-primary" href="#" role="button">Pause</a>
+
       <Difficulty onChange={props.onChange} />
       <Timer />
       <Numbers onClickNumber={(number) => props.onClickNumber(number)} />
       <div className="status__actions">
+        {/* <Action action='Pause' onClickAction={props.onClickPause} /> */}
         <Action action='undo' onClickAction={props.onClickUndo} />
         <Action action='erase' onClickAction={props.onClickErase} />
         <Action action='hint' onClickAction={props.onClickHint} />

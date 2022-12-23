@@ -14,7 +14,7 @@ export const GameSection = (props: GameSectionProps) => {
         gameArray,
         fastMode,
         cellSelected,
-        initArray } = useSudokuContext();
+        initArray,paused} = useSudokuContext();
 
   /**
    * Cell Highlight Method 1: Highlight all cells
@@ -128,6 +128,9 @@ export const GameSection = (props: GameSectionProps) => {
                       const indexOfArray = row * 9 + column;
                       const value = gameArray[indexOfArray];
 
+                      if(paused){
+                        return _unselectedCell(indexOfArray,"0");
+                      }
                       if (cellSelected === indexOfArray) {
                         return _selectedCell(indexOfArray, value, 'highlight');
                       }
