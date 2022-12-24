@@ -196,7 +196,15 @@ body {
 
 .game__cell.game__cell--filled.game__cell--highlightselected {
   color: var(--color-grey);
-  background-color: var(--color-orange-dark);
+  background-color: hsl(34deg 94% 61%);
+}
+.game__cell.game__cell--filled.game__cell--highlight2selected {
+  color: var(--color-grey);
+  background-color:hsl(34deg 74% 84% / 62%);
+}
+.game__cell.game__cell--filled.game__cell--wrongselected {
+  color:red;
+  background-color:hsl(34deg 74% 84% / 62%);
 }
 
 .game__cell.game__cell--userfilled.game__cell--highlightselected {

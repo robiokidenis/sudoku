@@ -38,6 +38,8 @@ export const Game: React.FC<{}> = () => {
     setFastMode,
     cellSelected,
     setCellSelected,
+    cellHiglight,
+    setCellHighlight,
     initArray,
     setInitArray,
     setWon,
@@ -47,7 +49,8 @@ export const Game: React.FC<{}> = () => {
     countHint,
     setCountHint,
     countTimer,
-    countMistakes,setCountMistakes
+    countMistakes,
+    setCountMistakes,
   } = useSudokuContext();
   let [mistakesMode, setMistakesMode] = useState<boolean>(false);
   let [history, setHistory] = useState<string[][]>([]);
@@ -73,9 +76,8 @@ export const Game: React.FC<{}> = () => {
     setWon(false);
     setPaused(false);
     setCountMistakes(0);
-    setCountHint(0)
-    // setCountTimer(0)
-   
+    setCountHint(0);
+    setCountTimer(0);
   }
 
   /**
@@ -126,9 +128,8 @@ export const Game: React.FC<{}> = () => {
       if (value === solvedArray[index]) {
         _fillCell(index, value);
       } else {
-        setCountMistakes(countMistakes+1);
+        setCountMistakes(countMistakes + 1);
         // TODO: Flash - Mistakes not allowed in Mistakes Mode
-        
       }
     } else {
       _fillCell(index, value);
@@ -151,6 +152,7 @@ export const Game: React.FC<{}> = () => {
       _userFillCell(indexOfArray, numberSelected);
     }
     setCellSelected(indexOfArray);
+    setCellHighlight(indexOfArray);
   }
 
   /**
@@ -203,10 +205,9 @@ export const Game: React.FC<{}> = () => {
    * fill the selected cell if its empty or wrong number is filled.
    */
   function onClickHint() {
-    if (cellSelected !== -1 && countHint<3) {
+    if (cellSelected !== -1 && countHint < 3) {
       _fillCell(cellSelected, solvedArray[cellSelected]);
-      setCountHint(countHint+1);
-      
+      setCountHint(countHint + 1);
     }
   }
   function onClickPause() {
@@ -289,23 +290,19 @@ export const Game: React.FC<{}> = () => {
           You <span className="overlay__textspan1">solved</span>{" "}
           <span className="overlay__textspan2">it!</span>
         </h2>
-          <h3 className="overlay__text2">Time: {formatTime(countTimer)}</h3>
+        <h3 className="overlay__text2">Time: {formatTime(countTimer)}</h3>
       </div>
       <div
         className={paused ? "overlay overlay--visible" : "overlay"}
         onClick={onClickPause}
       >
-        <h2 className="overlay__text">
-          PAUSED
-        </h2>
+        <h2 className="overlay__text">PAUSED</h2>
       </div>
       <div
-        className={(countMistakes>=5) ? "overlay overlay--visible" : "overlay"}
+        className={countMistakes >= 5 ? "overlay overlay--visible" : "overlay"}
         onClick={onClickNewGame}
       >
-        <h2 className="overlay__text">
-          GAME OVER!
-        </h2>
+        <h2 className="overlay__text">GAME OVER!</h2>
       </div>
     </>
   );

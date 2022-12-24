@@ -173,7 +173,7 @@ export const GameSection = (props: GameSectionProps) => {
     <section className="game">
       <div className="game__board_top">
 
-      <div className="game__board__title">Mistakes :  <span style={{color:'red'}}> {countMistakes} / 5</span></div>
+      <div className="game__board__title">Mistakes : <span style={{color:'red'}}> {countMistakes} / 5</span></div>
       <div className="game__board__title">Hint :  <span style={{color:'blue'}}> {countHint} / 3</span></div>
       <div className="game__board__pause_button" onClick={()=>setPaused(!paused)}> Pause</div>
       </div>
@@ -189,14 +189,24 @@ export const GameSection = (props: GameSectionProps) => {
                   if (paused) {
                     return _unselectedCell(indexOfArray, "0");
                   }
+
                   if (cellSelected === indexOfArray) {
                     return _selectedCell(indexOfArray, value, "highlight");
+                  }
+               
+                  if(_isCellRelatedToSelectedCell(row, column)){
+                    if(numberSelected !== "0"){
+                      return _unselectedCell(indexOfArray, value);
+                    }else{
+                      return _selectedCell(indexOfArray, value, "");
+                    }
                   }
 
                   if (fastMode) {
                     if (
                       numberSelected !== "0" &&
                       _isCellSameAsSelectedCell(row, column)
+                      
                     ) {
                       return _selectedCell(indexOfArray, value, "");
                     } else {
@@ -205,9 +215,10 @@ export const GameSection = (props: GameSectionProps) => {
                   } else {
                     if (
                       cellSelected !== -1 &&
-                      _isCellSameAsSelectedCell(row, column)
+                      _isCellSameAsSelectedCell(row, column) 
+                      
                     ) {
-                      return _selectedCell(indexOfArray, value, "");
+                      return _selectedCell(indexOfArray, value, "highlight2");
                     } else {
                       return _unselectedCell(indexOfArray, value);
                     }
