@@ -14,8 +14,6 @@ type SudokuContextProps = {
   setFastMode: React.Dispatch<React.SetStateAction<boolean>>,
   cellSelected: number,
   setCellSelected: React.Dispatch<React.SetStateAction<number>>,
-  cellHiglight: number,
-  setCellHighlight: React.Dispatch<React.SetStateAction<number>>,
   initArray: string[],
   setInitArray: React.Dispatch<React.SetStateAction<string[]>>,
   won: boolean,
@@ -37,7 +35,6 @@ const SudokuContext = createContext<SudokuContextProps>({ numberSelected: '0', s
                                                           timeGameStarted: moment(), setTimeGameStarted: () => {},
                                                           fastMode: false, setFastMode: () => {},
                                                           cellSelected: -1, setCellSelected: () => {},
-                                                          cellHiglight: -1, setCellHighlight: () => {},
                                                           initArray: [], setInitArray: () => {},
                                                           won: false, setWon: () => {}, 
                                                           paused:false,setPaused:()=>{},
@@ -58,7 +55,6 @@ export const SudokuProvider = ({ children }: SudokuProviderProps) => {
   let [ timeGameStarted, setTimeGameStarted ] = useState<moment.Moment>(moment());
   let [ fastMode, setFastMode ] = useState<boolean>(false);
   let [ cellSelected, setCellSelected ] = useState<number>(-1);
-  let [ cellHiglight, setCellHighlight ] = useState<number>(-1);
   let [ initArray, setInitArray ] = useState<string[]>([]);
   let [ countTimer, setCountTimer ] = useState<number>(0);
   let [ countMistakes, setCountMistakes ] = useState<number>(0);
@@ -75,7 +71,6 @@ export const SudokuProvider = ({ children }: SudokuProviderProps) => {
         timeGameStarted, setTimeGameStarted,
         fastMode, setFastMode,
         cellSelected, setCellSelected,
-        cellHiglight, setCellHighlight,
         initArray, setInitArray,
         won, setWon,
         paused,setPaused,

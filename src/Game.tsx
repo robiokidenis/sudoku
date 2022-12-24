@@ -38,8 +38,6 @@ export const Game: React.FC<{}> = () => {
     setFastMode,
     cellSelected,
     setCellSelected,
-    cellHiglight,
-    setCellHighlight,
     initArray,
     setInitArray,
     setWon,
@@ -152,7 +150,6 @@ export const Game: React.FC<{}> = () => {
       _userFillCell(indexOfArray, numberSelected);
     }
     setCellSelected(indexOfArray);
-    setCellHighlight(indexOfArray);
   }
 
   /**
